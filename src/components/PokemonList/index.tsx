@@ -7,6 +7,7 @@ import { PokemonCard } from '../PokemonCard';
 import { Container } from './styles';
 
 import { PokemonInterface } from '../../types/pokemon';
+import { usePokemons } from '../../hooks/usePokemons';
 
 interface PokemonListData {
   next: string | null;
@@ -20,7 +21,6 @@ export function PokemonList() {
 
   useEffect(() => {
     api.get('/pokemon').then(({ data }) => {
-      console.log(data);
       setPokemonList(data);
       setPokemons(data.results);
     });
@@ -41,15 +41,25 @@ export function PokemonList() {
 
   return (
     <Container>
-      {pokemons?.map((pokemon) => (
-        <PokemonCard name={pokemon.name} url={pokemon.url} key={pokemon.name} />
-      ))}
+      <>
+        {pokemons?.map((pokemon) => (
+          <PokemonCard
+            name={pokemon.name}
+            url={pokemon.url}
+            key={pokemon.name}
+          />
+        ))}
 
-      {pokemonList.next ? (
-        <button onClick={handleLoadMorePokemons}>Carregar mais pokemons</button>
-      ) : (
-        ''
-      )}
+        {/* {pokemonsList?.map((pokemon) => console.log(pokemon))} */}
+
+        {pokemonList.next ? (
+          <button onClick={handleLoadMorePokemons}>
+            Carregar mais pokemons
+          </button>
+        ) : (
+          ''
+        )}
+      </>
     </Container>
   );
 }
