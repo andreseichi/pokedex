@@ -1,3 +1,5 @@
+import { Home } from './pages/Home';
+
 import { GlobalStyle } from './styles/global';
 
 export function App() {
@@ -5,7 +7,7 @@ export function App() {
     <>
       <GlobalStyle />
 
-      <h1>hello world</h1>
+      <Home />
     </>
   );
 }
