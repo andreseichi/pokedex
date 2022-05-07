@@ -7,6 +7,8 @@ export const Container = styled.li`
   align-items: flex-start;
   width: 23.4375%;
 
+  margin: 0 0.78125% 50px;
+
   float: left;
 `;
 
@@ -24,6 +26,7 @@ export const PokemonInfo = styled.div`
   align-items: flex-start;
   justify-content: center;
   padding-left: 7.2525%;
+  width: 100%;
 
   .id {
     color: #919191;
@@ -32,6 +35,11 @@ export const PokemonInfo = styled.div`
     line-height: 1rem;
     margin: 0.5em 0;
     padding-top: 2px;
+  }
+
+  .types {
+    display: flex;
+    width: 100%;
   }
 `;
 
@@ -53,13 +61,12 @@ interface TypeSpanProps {
 }
 
 export const TypeSpan = styled.span<TypeSpanProps>`
-  background-color: var(--${({ type }) => type});
+  background: ${({ type }) => `var(--${type})`};
   color: #fff;
   border-radius: 3px;
-  line-height: 18px;
-  max-width: 110px;
-  margin: 0 1.5625% 0 0;
   width: 38.4375%;
+  line-height: 18px;
+  margin: 0 1.5625% 0 0;
   float: left;
   font-size: 0.6875rem;
   text-align: center;

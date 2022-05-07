@@ -30,7 +30,6 @@ interface PokemonData {
 
 export function PokemonCard({ name, url }: PokemonInterface) {
   const [isLoading, setIsLoading] = useState(true);
-  const [types, setTypes] = useState<Type[]>([]);
   const [pokemonData, setPokemonData] = useState({} as PokemonData);
 
   useEffect(() => {
@@ -58,11 +57,13 @@ export function PokemonCard({ name, url }: PokemonInterface) {
         <p className="id">Nº{pokemonIndexFormated}</p>
         <Title>{name}</Title>
 
-        {pokemonData.types?.map(({ type }) => (
-          <TypeSpan key={type.name} type={type.name}>
-            {type.name}
-          </TypeSpan>
-        ))}
+        <div className="types">
+          {pokemonData.types?.map(({ type }) => (
+            <TypeSpan key={type.name} type={type.name}>
+              {type.name}
+            </TypeSpan>
+          ))}
+        </div>
       </PokemonInfo>
     </Container>
   );
