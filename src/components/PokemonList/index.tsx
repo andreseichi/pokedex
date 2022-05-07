@@ -1,13 +1,22 @@
-import { useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
+
+import { Button } from '../Button';
+import { PokemonCard } from '../PokemonCard';
 
 import { api } from '../../services/api';
 
-import { PokemonCard } from '../PokemonCard';
+import { usePokemons } from '../../hooks/usePokemons';
 
-import { Container } from './styles';
+import {
+  Container,
+  Form,
+  FormContainer,
+  Input,
+  Content,
+  ReloadIcon,
+} from './styles';
 
 import { PokemonInterface } from '../../types/pokemon';
-import { usePokemons } from '../../hooks/usePokemons';
 
 interface PokemonListData {
   next: string | null;
@@ -18,15 +27,37 @@ interface PokemonListData {
 export function PokemonList() {
   const [pokemonList, setPokemonList] = useState({} as PokemonListData);
   const [pokemons, setPokemons] = useState<PokemonInterface[]>([]);
+  const [filteredPokemons, setFilteredPokemons] = useState<PokemonInterface[]>(
+    []
+  );
+  const [query, setQuery] = useState('');
 
   const { pokemonsList } = usePokemons();
 
-  useEffect(() => {
+  useEffect(() => getPokemons, []);
+
+  function getPokemons() {
     api.get('/pokemon').then(({ data }) => {
       setPokemonList(data);
       setPokemons(data.results);
     });
-  }, []);
+  }
+
+  useEffect(() => {
+    const filteredPeople =
+      query === ''
+        ? pokemonsList
+        : pokemonsList.filter((pokemon) => {
+            return pokemon.name.toLowerCase().includes(query.toLowerCase());
+          });
+
+    setFilteredPokemons(filteredPeople);
+  }, [query]);
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+    setPokemons(filteredPokemons);
+  }
 
   function handleLoadMorePokemons() {
     const url = pokemonList.next;
@@ -43,7 +74,17 @@ export function PokemonList() {
 
   return (
     <Container>
-      <>
+      <FormContainer>
+        <Form onSubmit={handleSubmit}>
+          <Input onChange={(event) => setQuery(event.target.value)} />
+        </Form>
+
+        <Button onClick={getPokemons}>
+          <ReloadIcon />
+        </Button>
+      </FormContainer>
+
+      <Content>
         {pokemons?.map((pokemon) => (
           <PokemonCard
             name={pokemon.name}
@@ -54,14 +95,14 @@ export function PokemonList() {
 
         {/* {pokemonsList?.map((pokemon) => console.log(pokemon))} */}
 
-        {pokemonList.next ? (
+        {pokemonList.next && query === '' ? (
           <button onClick={handleLoadMorePokemons}>
             Carregar mais pokemons
           </button>
         ) : (
           ''
         )}
-      </>
+      </Content>
     </Container>
   );
 }
