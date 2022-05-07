@@ -38,7 +38,7 @@ export function PokemonCard({ name, url }: PokemonInterface) {
     api.get(`${newUrl}`).then(({ data }) => {
       setPokemonData(data);
     });
-  }, []);
+  }, [url]);
 
   function handle() {
     console.log(pokemonData);

@@ -19,6 +19,8 @@ export function PokemonList() {
   const [pokemonList, setPokemonList] = useState({} as PokemonListData);
   const [pokemons, setPokemons] = useState<PokemonInterface[]>([]);
 
+  const { pokemonsList } = usePokemons();
+
   useEffect(() => {
     api.get('/pokemon').then(({ data }) => {
       setPokemonList(data);
