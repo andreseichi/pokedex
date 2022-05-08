@@ -19,6 +19,10 @@
 
 `git clone https://github.com/andreseichi/pokedex.git`
 
+or
+
+`git@github.com:andreseichi/discord-clone-react.git`
+
 ### 📒 Access the repo
 
 `cd pokedex`
