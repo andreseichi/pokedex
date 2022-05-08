@@ -5,15 +5,13 @@ import { Container as Button } from '../Button/styles';
 import { Search, Reload } from 'styled-icons/ionicons-outline';
 
 export const Container = styled.div`
-  margin: 0 auto;
+  margin: 2rem auto;
   width: 100%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-
-  margin-top: 2rem;
 `;
 
 export const Header = styled.header`
@@ -76,7 +74,7 @@ export const Content = styled.ul`
 
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 `;
 
 export const SearchIcon = styled(Search)`

@@ -2,6 +2,8 @@ import { FormEvent, useEffect, useState } from 'react';
 
 import { PokemonCard } from '../PokemonCard';
 
+import { Button } from '../Button';
+
 import { api } from '../../services/api';
 
 import { usePokemons } from '../../hooks/usePokemons';
@@ -43,6 +45,7 @@ export function PokemonList() {
     api.get('/pokemon').then(({ data }) => {
       setPokemonList(data);
       setPokemons(data.results);
+      setQuery('');
     });
   }
 
@@ -55,7 +58,7 @@ export function PokemonList() {
           });
 
     setFilteredPokemons(filteredPeople);
-  }, [query]);
+  }, [query, pokemonsList]);
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -82,7 +85,10 @@ export function PokemonList() {
 
         <FormContainer>
           <Form onSubmit={handleSubmit}>
-            <Input onChange={(event) => setQuery(event.target.value)} />
+            <Input
+              onChange={(event) => setQuery(event.target.value)}
+              value={query}
+            />
             <StyledButton type="submit">
               <SearchIcon />
             </StyledButton>
@@ -102,17 +108,12 @@ export function PokemonList() {
             key={pokemon.name}
           />
         ))}
-
-        {/* {pokemonsList?.map((pokemon) => console.log(pokemon))} */}
-
-        {pokemonList.next && query === '' ? (
-          <button onClick={handleLoadMorePokemons}>
-            Carregar mais pokemons
-          </button>
-        ) : (
-          ''
-        )}
       </Content>
+      {pokemonList.next && query === '' ? (
+        <Button onClick={handleLoadMorePokemons}>Load More Pokemons</Button>
+      ) : (
+        ''
+      )}
     </Container>
   );
 }
