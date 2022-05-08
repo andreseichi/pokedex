@@ -12,6 +12,22 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+  margin-top: 2rem;
+`;
+
+export const Header = styled.header`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+`;
+
+export const Title = styled.h1`
+  color: #919191;
+  font-size: 1.875rem;
+  font-weight: normal;
+  line-height: 37px;
 `;
 
 export const FormContainer = styled.div`

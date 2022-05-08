@@ -8,6 +8,8 @@ import { usePokemons } from '../../hooks/usePokemons';
 
 import {
   Container,
+  Header,
+  Title,
   Form,
   FormContainer,
   Input,
@@ -75,18 +77,22 @@ export function PokemonList() {
 
   return (
     <Container>
-      <FormContainer>
-        <Form onSubmit={handleSubmit}>
-          <Input onChange={(event) => setQuery(event.target.value)} />
-          <StyledButton type="submit">
-            <SearchIcon />
-          </StyledButton>
-        </Form>
+      <Header>
+        <Title>Pokédex</Title>
 
-        <StyledButton onClick={getPokemons}>
-          <ReloadIcon />
-        </StyledButton>
-      </FormContainer>
+        <FormContainer>
+          <Form onSubmit={handleSubmit}>
+            <Input onChange={(event) => setQuery(event.target.value)} />
+            <StyledButton type="submit">
+              <SearchIcon />
+            </StyledButton>
+          </Form>
+
+          <StyledButton onClick={getPokemons}>
+            <ReloadIcon />
+          </StyledButton>
+        </FormContainer>
+      </Header>
 
       <Content>
         {pokemons?.map((pokemon) => (
