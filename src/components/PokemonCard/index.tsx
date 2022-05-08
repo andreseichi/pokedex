@@ -5,6 +5,7 @@ import { Type } from '../../types/type';
 
 import {
   Container,
+  ImageContainer,
   Sprite,
   PokemonInfo,
   LoadingIcon,
@@ -50,9 +51,11 @@ export function PokemonCard({ name, url }: PokemonInterface) {
 
   return (
     <Container onClick={handle}>
-      {isLoading ? <LoadingIcon src={Loading} alt="" /> : null}
+      <ImageContainer>
+        {isLoading ? <LoadingIcon src={Loading} alt="" /> : null}
 
-      <Sprite src={pokemonImageUrl} onLoad={() => setIsLoading(false)} />
+        <Sprite src={pokemonImageUrl} onLoad={() => setIsLoading(false)} />
+      </ImageContainer>
       <PokemonInfo>
         <p className="id">Nº{pokemonIndexFormated}</p>
         <Title>{name}</Title>

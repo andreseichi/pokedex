@@ -43,4 +43,8 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     font-family: 'Roboto', sans-serif;
   }
+
+  input {
+    font-family: 'Roboto', sans-serif;
+  }
 `;

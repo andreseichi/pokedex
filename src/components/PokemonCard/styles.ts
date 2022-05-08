@@ -10,6 +10,21 @@ export const Container = styled.li`
   margin: 0 0.78125% 50px;
 
   float: left;
+
+  cursor: pointer;
+`;
+
+export const ImageContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 5rem;
+  min-height: 5rem;
+
+  position: relative;
 `;
 
 export const Sprite = styled.img`
@@ -17,7 +32,7 @@ export const Sprite = styled.img`
   height: 100%;
   display: block;
 
-  background-color: red;
+  background-color: #f2f2f2;
 `;
 
 export const PokemonInfo = styled.div`
@@ -46,7 +61,11 @@ export const PokemonInfo = styled.div`
 export const LoadingIcon = styled.img`
   width: 50%;
   height: 50%;
-  display: block;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const Title = styled.h2`

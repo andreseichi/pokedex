@@ -1,6 +1,5 @@
 import { FormEvent, useEffect, useState } from 'react';
 
-import { Button } from '../Button';
 import { PokemonCard } from '../PokemonCard';
 
 import { api } from '../../services/api';
@@ -13,7 +12,9 @@ import {
   FormContainer,
   Input,
   Content,
+  SearchIcon,
   ReloadIcon,
+  StyledButton,
 } from './styles';
 
 import { PokemonInterface } from '../../types/pokemon';
@@ -77,11 +78,14 @@ export function PokemonList() {
       <FormContainer>
         <Form onSubmit={handleSubmit}>
           <Input onChange={(event) => setQuery(event.target.value)} />
+          <StyledButton type="submit">
+            <SearchIcon />
+          </StyledButton>
         </Form>
 
-        <Button onClick={getPokemons}>
+        <StyledButton onClick={getPokemons}>
           <ReloadIcon />
-        </Button>
+        </StyledButton>
       </FormContainer>
 
       <Content>
