@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const Container = styled.li`
   display: flex;
@@ -10,8 +10,14 @@ export const Container = styled.li`
   margin: 0 0.78125% 50px;
 
   float: left;
-
   cursor: pointer;
+
+  transition: all 0.1s ease-in;
+
+  &:hover {
+    transform: scale(1.1);
+    transform: translateY(-1rem);
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -31,6 +37,8 @@ export const Sprite = styled.img`
   width: 100%;
   height: 100%;
   display: block;
+
+  border-radius: 5px;
 
   background-color: #f2f2f2;
 `;
