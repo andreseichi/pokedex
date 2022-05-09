@@ -58,6 +58,10 @@ export const PokemonInfo = styled.div`
     line-height: 1rem;
     margin: 0.5em 0;
     padding-top: 2px;
+
+    @media screen and (max-width: 768px) {
+      font-size: 0.6125rem;
+    }
   }
 
   .types {
@@ -81,6 +85,10 @@ export const Title = styled.h2`
   font-size: 1.5rem;
   text-transform: capitalize;
   margin-bottom: 0.5em;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 interface TypeSpanProps {
@@ -98,4 +106,8 @@ export const TypeSpan = styled.span<TypeSpanProps>`
   font-size: 0.6875rem;
   text-align: center;
   text-transform: capitalize;
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.5875rem;
+  }
 `;

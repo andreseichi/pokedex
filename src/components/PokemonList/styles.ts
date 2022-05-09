@@ -19,6 +19,7 @@ export const Header = styled.header`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  width: 100%;
 `;
 
 export const Title = styled.h1`
@@ -26,10 +27,18 @@ export const Title = styled.h1`
   font-size: 1.875rem;
   font-weight: normal;
   line-height: 37px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.375rem;
+  }
 `;
 
 export const FormContainer = styled.div`
   display: flex;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const Form = styled.form`
