@@ -36,7 +36,7 @@ export const Title = styled.h1`
 export const FormContainer = styled.div`
   display: flex;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 480px) {
     width: 100%;
   }
 `;
