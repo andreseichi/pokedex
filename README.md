@@ -1,4 +1,4 @@
-# Discord UI Clone
+# Pokedex
 
 <p align="center">
     <img alt="Yarn package" src="https://img.shields.io/badge/Yarn-2C8EBB?style=for-the-badge&logo=yarn&logoColor=fff">
